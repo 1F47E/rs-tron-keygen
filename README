@@ -1,0 +1,42 @@
+
+  __________  ____  _   __
+ /_  __/ __ \/ __ \/ | / /
+  / / / /_/ / / / /  |/ / 
+ / / / _, _/ /_/ / /|  /  
+/_/ /_/ |_|\____/_/ |_/   
+keygen
+
+
+
+
+
+Private key
+
+Generate a random 256-bit number
+
+A private key in Tron is a 256-bit random number that is used to generate a public key and its corresponding address.
+Derive the public key from the private key using Elliptic Curve Cryptography (ECC)
+
+
+Public key
+
+The public key is generated from the private key using the Elliptic Curve Cryptography algorithm (secp256k1).
+The resulting public key is a point on the curve represented by its X and Y coordinates, which are typically concatenated to form a 64-byte hex string.
+This public key can then be hashed using Keccak-256 algorithm to generate the corresponding Tron address.
+
+
+Address
+
+The address is a 21-byte binary value that can be represented as a 42-character base58 string. 
+To derive the address, take the Keccak-256 hash of the public key, take the last 20 bytes of the hash, 
+prepend a byte with value 41, and then convert the resulting 21-byte binary value to a base58 string using Base58Check encoding.
+
+Base58 vs Base58Check
+Important to note that the Base58Check encoding is different from the Base58 encoding.
+The difference is that Base58Check encoding includes a checksum to prevent errors when copying the address.
+To generate the checksum, calculate double SHA-256 hash of the address and take the first 4 bytes of the hash.
+Append the checksum to the address and then encode the resulting 25-byte binary value to a base58 string.
+
+
+
+
